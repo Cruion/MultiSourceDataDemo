@@ -13,9 +13,10 @@ $(document).ready(function () {
 
         /*
             TODO: Retrieve just a list of suburbs from the dataset and clean it up.
-            [ ] Prepare SQL satement to retrieve suburbs from dataset
-            [ ] AJAX call to get data
-            [ ] Success method to process and store in local storage
+            [X] Prepare SQL satement to retrieve suburbs from dataset
+            [X] AJAX call to get data
+            [X] Success method to process and store in local storage
+            [X] Call Bloodhound Typeahead Initaliser
         */
 
 
@@ -27,7 +28,10 @@ $(document).ready(function () {
 
         cleanLocalities = JSON.parse(localStorage.getItem("Suburbs"));
 
-        initaliseBloodhoundTypeAhead(cleanLocalities);
+        /*
+            TODO: Initalise autocomplete
+            [X] Call Bloodhound Typeahead Initaliser
+        */
 
     }
 
@@ -123,9 +127,9 @@ $(document).ready(function () {
 
 /* 
     TODO: Function to initalise the autocomplete functionality
-    [ ] Construct the engine behind the autocomplete
-    [ ] Attached engine to input fields
-    [ ] Set displau options for the autocomplete
+    [X] Construct the engine behind the autocomplete
+    [X] Attached engine to input fields
+    [X] Set display options for the autocomplete
 */
 function initaliseBloodhoundTypeAhead(suburbs) {
 
