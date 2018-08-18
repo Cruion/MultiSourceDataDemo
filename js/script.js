@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     /*
         TODO: Load Google Charts
-        [X] Load the Google Charts API into the browser memory so we can use it later.
+        [ ] Load the Google Charts API into the browser memory so we can use it later.
     */
 
 
@@ -13,10 +13,10 @@ $(document).ready(function () {
 
         /*
             TODO: Retrieve just a list of suburbs from the dataset and clean it up.
-            [X] Prepare SQL satement to retrieve suburbs from dataset
-            [X] AJAX call to get data
-            [X] Success method to process and store in local storage
-            [X] Call Bloodhound Typeahead Initaliser
+            [ ] Prepare SQL satement to retrieve suburbs from dataset
+            [ ] AJAX call to get data
+            [ ] Success method to process and store in local storage
+            [ ] Call Bloodhound Typeahead Initaliser
         */
 
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
         /*
             TODO: Initalise autocomplete
-            [X] Call Bloodhound Typeahead Initaliser
+            [ ] Call Bloodhound Typeahead Initaliser
         */
 
     }
@@ -90,9 +90,9 @@ $(document).ready(function () {
 
                 /*
                     TODO: Get data from API that is for the left selected suburb
-                    [X] Construct SQL statement to retrieve all data for that suburb
-                    [X] AJAX call to get the data
-                    [X] Success function to process, store and present the data
+                    [ ] Construct SQL statement to retrieve all data for that suburb
+                    [ ] AJAX call to get the data
+                    [ ] Success function to process, store and present the data
                 */
 
             }
@@ -104,9 +104,9 @@ $(document).ready(function () {
                 
                 /*
                     TODO: Get data from API that is for the right selected suburb
-                    [X] Construct SQL statement to retrieve all data for that suburb
-                    [X] AJAX call to get the data
-                    [X] Success function to process, store and present the data
+                    [ ] Construct SQL statement to retrieve all data for that suburb
+                    [ ] AJAX call to get the data
+                    [ ] Success function to process, store and present the data
                 */
 
             }
@@ -127,9 +127,9 @@ $(document).ready(function () {
 
 /* 
     TODO: Function to initalise the autocomplete functionality
-    [X] Construct the engine behind the autocomplete
-    [X] Attached engine to input fields
-    [X] Set display options for the autocomplete
+    [ ] Construct the engine behind the autocomplete
+    [ ] Attached engine to input fields
+    [ ] Set display options for the autocomplete
 */
 function initaliseBloodhoundTypeAhead(suburbs) {
 
@@ -137,9 +137,9 @@ function initaliseBloodhoundTypeAhead(suburbs) {
 
 /*
     TODO: Function to clean, store and return records of a particular suburb.
-    [X] Get just the records from the data
-    [X] Store the records attached to the suburb into local storage
-    [X] Return the records
+    [ ] Get just the records from the data
+    [ ] Store the records attached to the suburb into local storage
+    [ ] Return the records
 */
 function cleanAndStore(data, suburb) {
    
@@ -233,12 +233,12 @@ function outputDisplay(records, suburb, parentElement) {
 
     /*
         TODO: Convert array of data into Google Chart and display.
-        [X] Convert the multidimension array we produced into a Google Chart
+        [ ] Convert the multidimension array we produced into a Google Chart
                 data table.
-        [X] Set up the chart options for how it will be displayed.
-        [X] Place an empty div to use for the chart.
-        [X] Get the empty div we created earlier and create the chart inside it.
-        [X] Draw the chart with the data and the options we set.
+        [ ] Set up the chart options for how it will be displayed.
+        [ ] Place an empty div to use for the chart.
+        [ ] Get the empty div we created earlier and create the chart inside it.
+        [ ] Draw the chart with the data and the options we set.
     */
 
     /*

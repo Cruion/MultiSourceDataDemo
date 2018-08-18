@@ -437,3 +437,24 @@ chart.draw(dataTable, options);
 ```
 
 ## Exercise 5: Using SQL to Retrieve a Matching Suburb Image
+
+So far the majority of the website's content is text and charts. If we want to bring in an image of the suburb also we have a number of options. We could get a modern day image using [Flickr API](https://www.flickr.com/services/api/) or historial real estate maps from [State Library Queensland](https://data.gov.au/dataset/real-estate-maps).
+
+For this we would like to use a historial image to compare very old real estate with the current.
+
+From what you have learnt in this workshop around SQL filtering, complete the following ***TODO***.
+
+Place the image from the dataset at the top of the compare side above the suburb name.
+
+For a single image, you may want to consider using the `LIMIT` clause in SQL. The data API uses a databased based on MySQL syntax.
+
+[W3 Schools SQL - TOP, LIMIT, ROWNUM](https://www.w3schools.com/sql/sql_top.asp)
+
+```javascript
+/*
+    TODO: Use SLQ Real Estate Dataset to retrieve a historial map of area
+    [ ] Prepare SQL satement to retrieve single image from dataset that is in same suburb
+    [ ] AJAX call to get data
+    [ ] Success method to process and display image
+*/
+```
