@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     /*
         TODO: Load Google Charts
-        [ ] Load the Google Charts API into the browser memory so we can use it later.
+        [X] Load the Google Charts API into the browser memory so we can use it later.
     */
 
 
@@ -233,12 +233,12 @@ function outputDisplay(records, suburb, parentElement) {
 
     /*
         TODO: Convert array of data into Google Chart and display.
-        [ ] Convert the multidimension array we produced into a Google Chart
+        [X] Convert the multidimension array we produced into a Google Chart
                 data table.
-        [ ] Set up the chart options for how it will be displayed.
-        [ ] Place an empty div to use for the chart.
-        [ ] Get the empty div we created earlier and create the chart inside it.
-        [ ] Draw the chart with the data and the options we set.
+        [X] Set up the chart options for how it will be displayed.
+        [X] Place an empty div to use for the chart.
+        [X] Get the empty div we created earlier and create the chart inside it.
+        [X] Draw the chart with the data and the options we set.
     */
 
     /*

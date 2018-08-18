@@ -1,5 +1,15 @@
 # MultiSourceDataDemo
 
+* [Getting the Code](#getting-the-code)
+* [Setting up the Environment](#setting-up-the-environment)
+* [Exploring the First Dataset](#exploring-the-first-dataset)
+1. [Exercise 1: Using SQL to Filter API Results - Suburbs Only](#exercise-1-using-sql-to-filter-api-results---suburbs-only)
+2. [Exercise 2: Using SQL to Filter API Results - Get Suburb Data](#exercise-2-using-sql-to-filter-api-results---get-suburb-data)
+3. [Exercise 3: Autocomplete on Filter Inputs](#exercise-3-autocomplete-on-filter-inputs)
+4. [Exercise 4: Visualising Data with Google Charts](#exercise-4-visualising-data-with-google-charts)
+5. [
+Exercise 5: Using SQL to Retrieve a Matching Suburb Image](#exercise-5-using-sql-to-retrieve-a-matching-suburb-image)
+
 ## Getting the Code
 The code for this example is hosted here on GitHub. You may be familiar with GitHub as being a great collaboration tool for version control. It also hosts a number of good code examples to draw inspriations from.
 
@@ -217,7 +227,7 @@ In the `cleanAndStore()` function we need to do what we similarly did with the f
 function cleanAndStore(data, suburb) {
     var jsonBlock = JSON.parse(data);
     var records = jsonBlock.result.records;
-    
+
 }
 ```
 
@@ -323,5 +333,107 @@ Lastly for this exercise we need to call the initaliser once we have the list of
 Once you have added this, go and test out the autocomplete.
 
 ## Exercise 4: Visualising Data with Google Charts
+[Google Charts](https://developers.google.com/chart/) provides a simple way of visualising tabular data in chart format. Other solutions, such as [D3.js](https://d3js.org/), exist which provide improved visualisations however they generally required further configuration.
+
+We will use Google Charts to produce a line chart of the average monthly rental price between January 2015 and March 2015 for the different residential types. Currently the code creates a multidimensional array of data which we will turn into a chart.
+
+It would be a good idea to have a look over the code to see what is happening. In essence it is going to produce a table, line by line starting at the top that will look like:
+
+| Month      | Apartment  | House  | Townhouse  | Unit   |
+|------------|-----------:|-------:|-----------:|-------:|
+| January    | $ ####     | $ #### | $ ####     | $ #### |
+| Febuary    | $ ####     | $ #### | $ ####     | $ #### |
+| March      | $ ####     | $ #### | $ ####     | $ #### |
+
+### Load the Google Charts API into the browser memory so we can use it later
+We want to link the library in the same location as the `typeahead.js`. For _Google Charts_ they provide a hosted loader script that we can use. See how to ***[Load the Libraries](https://developers.google.com/chart/interactive/docs/basic_load_libs)***.
+
+At the top of our `$(document).ready(function () {});` we will want to call the function to load _Google Charts_. Place this near the following ***TODO***.
+
+```javascript
+/*
+    TODO: Load Google Charts
+    [ ] Load the Google Charts API into the browser memory so we can use it later.
+*/
+```
+
+```javascript
+google.charts.load('current', {'packages':['corechart']});
+```
+
+Don't worry about the load callback as we will look after this soon. We are now going to work on the follow ***TODO*** section to set up out chart proper.
+
+```javascript
+/*
+    TODO: Convert array of data into Google Chart and display.
+    [ ] Convert the multidimension array we produced into a Google Chart data table.
+    [ ] Set up the chart options for how it will be displayed.
+    [ ] Place an empty div to use for the chart.
+    [ ] Get the empty div we created earlier and create the chart inside it.
+    [ ] Draw the chart with the data and the options we set.
+*/
+```
+
+### Convert the multidimension array we produced into a Google Chart data table
+To convert the multidimensional array we will use a function from the _Google Visualisation_ library.
+
+[google.visualization.arrayToDataTable()](https://developers.google.com/chart/interactive/docs/reference#arraytodatatable)
+
+The first argument is the multidimensional array and with the second we are saying that the first row is headers.
+
+```javascript
+    var dataTable = google.visualization.arrayToDataTable(data, false);
+```
+
+### Set up the chart options for how it will be displayed
+We are producing a line chart. Line charts have a number of options on how they can be created. Have a look at the library reference for line chart to see what it can do. We are using the _corechart_ version of the line chart rather than the beta _Material_ version as it is does not have good support for options.
+
+[Google Charts - Line Chart - Configuration Options](https://developers.google.com/chart/interactive/docs/gallery/linechart#configuration-options)
+
+We want to provide the following for our chart:
+* title - Average Rent in `suburb`
+* subtitle - by Dwelling Type - Quarter 1, 2015
+* legend in the bottom
+* a vertical axis with a max of $1000
+* width equal to 90% of its parent's container's width
+* height equal to 80% of its parent's container's width
+
+Setting these options we have the following:
+
+```javascript 
+ var options = {
+    title: "Average Rent in "+suburb,
+    subtitle: "by Dwelling Type - Quarter 1, 2015",
+    legend: { position: 'bottom' },
+    vaxis: {
+        maxValue: 1000
+    },
+    width: parentElement.width() * 0.9,
+    height: parentElement.width() * 0.8
+}
+```
+
+Have a go at making some changes yourself.
+
+### Place an empty div to use for the chart
+_Google Charts_ works by placing the chart your want created into a empty element. For this we need to create an element inside the left or right side. We can do this by appending a div to the `parentElement`.
+
+```javascript
+parentElement.append("<div></div>");
+```
+
+### Get the empty div we created earlier and create the chart inside it
+To get the newly created element, we want to get the `div` that is a child element of `parentElement`. With this `div` selected we then initalise the line chart in its space. 
+
+```javascript
+var chart = new google.visualization.LineChart(parentElement.children("div")[0]);
+```
+
+### Draw the chart with the data and the options we set
+To finally draw the chart we need to call the `draw()` function on the chart.
+
+```javascript
+chart.draw(dataTable, options);
+```
 
 ## Exercise 5: Using SQL to Retrieve a Matching Suburb Image
