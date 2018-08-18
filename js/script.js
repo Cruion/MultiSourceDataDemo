@@ -89,10 +89,10 @@ $(document).ready(function () {
             } else {
 
                 /*
-                    TODO: Get data from API that is for the selected suburb
-                    [ ] Construct SQL statement to retrieve all data for that suburb
-                    [ ] AJAX call to get the data
-                    [ ] Sucess function to process, store and present the data
+                    TODO: Get data from API that is for the left selected suburb
+                    [X] Construct SQL statement to retrieve all data for that suburb
+                    [X] AJAX call to get the data
+                    [X] Success function to process, store and present the data
                 */
 
             }
@@ -103,10 +103,10 @@ $(document).ready(function () {
             } else {
                 
                 /*
-                    TODO: Get data from API that is for the selected suburb
-                    [ ] Construct SQL statement to retrieve all data for that suburb
-                    [ ] AJAX call to get the data
-                    [ ] Sucess function to process, store and present the data
+                    TODO: Get data from API that is for the right selected suburb
+                    [X] Construct SQL statement to retrieve all data for that suburb
+                    [X] AJAX call to get the data
+                    [X] Success function to process, store and present the data
                 */
 
             }
@@ -136,10 +136,10 @@ function initaliseBloodhoundTypeAhead(suburbs) {
 }
 
 /*
-    TODO: Function to clearn, store and return records of a particular suburb.
-    [ ] Get just the records from the data
-    [ ] Store the records attached to the suburb into local storage
-    [ ] Return the records
+    TODO: Function to clean, store and return records of a particular suburb.
+    [X] Get just the records from the data
+    [X] Store the records attached to the suburb into local storage
+    [X] Return the records
 */
 function cleanAndStore(data, suburb) {
    

@@ -127,7 +127,115 @@ Lastly on this exercise, we need to store the cleaned up suburb list into local 
 ```
 To make sure the code is working as intended check the local storage section of the developer console. You make like to delete the local storage and refresh to see if it is loading correctly.
 
-## Exercise 2: Autocomplete on Filter Inputs
+## Exercise 2: Using SQL to Filter API Results - Get Suburb Data
+Now that we have our list of suburbs, we want to use these to get data about these suburbs. Rather than grabbing all the data, we will just get the data that the user is interested in seeing.
+
+Once we have the data for the suburb that the user wants to see, we will store it in local storage so in the future we don't need to go to the API for that suburb again.
+
+We will be working on the following two near identical ***TODO***  blocks and a seperate ***TODO*** for displaying data.
+
+```javascript
+/*
+    TODO: Get data from API that is for the left selected suburb
+    [ ] Construct SQL statement to retrieve all data for that suburb
+    [ ] AJAX call to get the data
+    [ ] Success function to process, store and present the data
+*/
+...
+/*
+    TODO: Get data from API that is for the right selected suburb
+    [ ] Construct SQL statement to retrieve all data for that suburb
+    [ ] AJAX call to get the data
+    [ ] Success function to process, store and present the data
+*/
+...
+/*
+    TODO: Function to clean, store and return records of a particular suburb.
+    [ ] Get just the records from the data
+    [ ] Store the records attached to the suburb into local storage
+    [ ] Return the records
+*/
+```
+Working with the left side, we will prepare our SQL and AJAX call. We can than copy and slightly modify it for the right side.
+
+### Construct SQL statement to retrieve all data for that suburb
+
+For this SQL statement we want to return everything about the the particular suburb. To get every column, we can use the SQL `SELECT *` statement. To get just about a particular item, we can use the `WHERE` clause in the statement to filter the data.
+
+[W3 Schools SQL - WHERE](https://www.w3schools.com/sql/sql_where.asp)
+
+These are normally structured as  
+```sql
+SELECT *
+FROM table_name
+WHERE column_name = 'VALUE'
+```
+
+As per the previous SQL statement, we need to surround `table_name` and `column_name` in double quotes (`"`).
+
+With this we create the following SQL statement.
+
+```sql
+SELECT *
+FROM "5edaa132-b4fd-4a47-84d1-44bc76e80c50"
+WHERE "locality" = 'SUBURB'
+```
+
+### AJAX call to get the data
+
+For the AJAX call for this we need to call the same base URL as the previous call however we need to dynamically change the URL based on what the suburb is. For this we also need to make it UPPERCASE as we made it Title Case for presenting later.
+
+Once you have generated the URL for the API call, replace SUBURB will the `leftSuburb` variable.
+
+```javascript
+$.ajax({
+    type: "GET",
+    url: "https://data.qld.gov.au/api/action/datastore_search_sql?sql=SELECT%20*%20FROM%20%225edaa132-b4fd-4a47-84d1-44bc76e80c50%22%20WHERE%20%22locality%22%20LIKE%20%27" + leftSuburb.toUpperCase() + "%27",
+    success: function (data) {
+        
+    },
+    dataType: "text"
+});
+```
+
+### Success function to process, store and present the data
+We are going to use a function that we will pass in the data returned from the API so it can clean it up and store it. The function will then return the cleaned data which will then be displayed. The display will be handled by `outputDisplay()` which is mostly written already.
+
+So we need the following two function calls.
+
+```javascript
+        var leftRecords = cleanAndStore(data, leftSuburb);
+        outputDisplay(leftRecords, leftSuburb, $("#compare-left"));
+```
+
+Copy the AJAX call also into the right side and update the references as required.
+
+### Get just the records from the data
+In the `cleanAndStore()` function we need to do what we similarly did with the first AJAX call for the data. We need to get the records only.
+
+```javascript
+function cleanAndStore(data, suburb) {
+    var jsonBlock = JSON.parse(data);
+    var records = jsonBlock.result.records;
+    
+}
+```
+
+### Store the records attached to the suburb into local storage
+Once we have the records, we want to store this in the local storage. Use the suburb name as the key.
+
+```javascript
+    var jsonStorage = JSON.stringify(records);
+    localStorage.setItem(suburb, jsonStorage);
+```
+
+### Return the records
+Make sure to return the records so they can be used and outputted.
+```javascript
+    return records;
+```
+
+## Exercise 3: Autocomplete on Filter Inputs
 To make it easier for the end user to use, we would like to add an autocomplete to the suburb search fields. This will allow us to start typing a suburb and we will be offered suggestions on how to complete it.
 
 We are going to use [typeahead.js](https://github.com/twitter/typeahead.js). 
@@ -214,6 +322,6 @@ Lastly for this exercise we need to call the initaliser once we have the list of
 
 Once you have added this, go and test out the autocomplete.
 
-## Exercise 3: Visualising Data with Google Charts
+## Exercise 4: Visualising Data with Google Charts
 
-## Exercise 4: Using SQL to Retrieve a Matching Suburb Image
+## Exercise 5: Using SQL to Retrieve a Matching Suburb Image
