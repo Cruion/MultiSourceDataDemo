@@ -228,8 +228,8 @@ function outputDisplay(records, suburb, parentElement) {
         the chart
     */
     processAndDisplayMonth("January 2015", "1");
-    processAndDisplayMonth("Febuary 2015", "2");
-    processAndDisplayMonth("January 2015", "3");
+    processAndDisplayMonth("February 2015", "2");
+    processAndDisplayMonth("March 2015", "3");
 
     /*
         TODO: Convert array of data into Google Chart and display.
