@@ -246,6 +246,14 @@ function outputDisplay(records, suburb, parentElement) {
         code.
     */
     function processAndDisplayMonth(monthString, monthIndex) {
+        
+        /*
+            Check to make sure that there has been a bond signed during this month
+        */
+        if (!suburbStats[monthIndex]) {
+            return;
+        }
+
         parentElement.append("<h3>" + monthString + "</h3>");
         count = 0;
 
